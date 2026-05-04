@@ -1,26 +1,18 @@
 # Learn To Hygraph
 
-A small blog project built with Hygraph as the headless CMS and a React + TypeScript + Vite frontend. The goal of this assignment is to combine a headless CMS, GraphQL, and query-based data fetching to build a dynamic blog where the content is managed from Hygraph.
+This is a small blog project built with Hygraph as the headless CMS and a React + TypeScript + Vite frontend. It fetches posts from Hygraph with GraphQL and renders them with Material UI and the Hygraph rich text renderer.
 
-## Assignment Goal
+## What This Project Does
 
-Build a blog page that fetches posts from Hygraph and renders them in the frontend with GraphQL. The content should be maintained in the CMS so new posts can be added without changing the frontend code.
+The app loads blog posts from Hygraph, shows a loading state and error state, and renders each post as a styled card. Rich text content is displayed with the Hygraph renderer instead of being treated like plain text.
 
-## Requirements
+## Features
 
-- Create a content model in Hygraph for blog posts
-- Add at least 5 blog posts
-- Fetch and display the blog posts in the frontend using GraphQL
-- Style the page with a component library such as Material UI or Shadcn
-- Make the layout responsive
-
-## Bonus Features
-
-If time allows, you can also add the following:
-
-- Search blog posts by title
-- Filter posts to show only the newest posts from today
-- Sort posts by date or name using a dropdown menu
+- Fetches blog posts from Hygraph with GraphQL
+- Renders rich text content with `@graphcms/rich-text-react-renderer`
+- Uses Material UI for layout, spacing, and typography
+- Has a responsive layout with a centered content column
+- Includes a separate note file that explains the rich text issue and fix
 
 ## Tech Stack
 
@@ -30,30 +22,29 @@ If time allows, you can also add the following:
 - GraphQL
 - Hygraph
 - Material UI
-- Optional: TanStack Query for data fetching
+- `@graphcms/rich-text-react-renderer`
 
 ## Getting Started
 
-1. Install dependencies:
+1. Install dependencies.
 
 ```bash
 npm install
 ```
 
-1. Create a `.env` file in the project root and add your Hygraph credentials:
+1. Create a `.env` file in the project root and add your Hygraph endpoint.
 
 ```bash
 VITE_HYGRAPH_ENDPOINT=your_hygraph_graphql_endpoint
-VITE_HYGRAPH_TOKEN=your_hygraph_api_token
 ```
 
-1. Start the development server:
+1. Start the development server.
 
 ```bash
 npm run dev
 ```
 
-1. Build the project:
+1. Build the project.
 
 ```bash
 npm run build
@@ -61,16 +52,23 @@ npm run build
 
 ## Project Structure
 
-- `src/main.tsx` - App entry point
-- `src/App.tsx` - Main application component
-- `public/` - Static assets
-
-## Submission
-
-Submit the assignment with a link to your GitHub repository.
+- [src/main.tsx](src/main.tsx) - App entry point with the MUI theme setup
+- [src/App.tsx](src/App.tsx) - Main blog UI and rich text rendering
+- [src/hook/useFetchBlog.tsx](src/hook/useFetchBlog.tsx) - Custom data fetching hook
+- [src/query/BlogHygraph.ts](src/query/BlogHygraph.ts) - GraphQL query for blog posts
+- [src/types/Blog.ts](src/types/Blog.ts) - TypeScript types for blog data
+- [HYGRAPH_RICH_TEXT_NOTES.md](HYGRAPH_RICH_TEXT_NOTES.md) - Short explanation of the rich text issue and fix
 
 ## Notes
 
-This repository currently contains the starter setup. The blog UI, Hygraph schema, and GraphQL fetching logic can be added on top of this foundation.
+Hygraph rich text should be queried as AST data and passed directly into `RichText`. It should not be parsed as JSON manually or treated like plain text.
 
-For a short explanation of the Hygraph rich text issue we hit and the correct setup, see [HYGRAPH_RICH_TEXT_NOTES.md](HYGRAPH_RICH_TEXT_NOTES.md).
+If the rich text content later includes embeds, images, links, or custom models, the query may also need `references`.
+
+## Acknowledgements
+
+This project was developed with help from GitHub Copilot. It helped explain:
+
+- how Hygraph rich text should be queried and rendered
+- how the Material UI components fit together in the layout
+- how the fetch hook and TypeScript types line up with the API data
