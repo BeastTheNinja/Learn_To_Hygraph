@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# Learn To Hygraph
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small blog project built with Hygraph as the headless CMS and a React + TypeScript + Vite frontend. The goal of this assignment is to combine a headless CMS, GraphQL, and query-based data fetching to build a dynamic blog where the content is managed from Hygraph.
 
-Currently, two official plugins are available:
+## Assignment Goal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Build a blog page that fetches posts from Hygraph and renders them in the frontend with GraphQL. The content should be maintained in the CMS so new posts can be added without changing the frontend code.
 
-## React Compiler
+## Requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Create a content model in Hygraph for blog posts
+- Add at least 5 blog posts
+- Fetch and display the blog posts in the frontend using GraphQL
+- Style the page with a component library such as Material UI or Shadcn
+- Make the layout responsive
 
-## Expanding the ESLint configuration
+## Bonus Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+If time allows, you can also add the following:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Search blog posts by title
+- Filter posts to show only the newest posts from today
+- Sort posts by date or name using a dropdown menu
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React
+- TypeScript
+- Vite
+- GraphQL
+- Hygraph
+- Material UI
+- Optional: TanStack Query for data fetching
+
+## Getting Started
+
+1. Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Create a `.env` file in the project root and add your Hygraph credentials:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_HYGRAPH_ENDPOINT=your_hygraph_graphql_endpoint
+VITE_HYGRAPH_TOKEN=your_hygraph_api_token
 ```
+
+1. Start the development server:
+
+```bash
+npm run dev
+```
+
+1. Build the project:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+- `src/main.tsx` - App entry point
+- `src/App.tsx` - Main application component
+- `public/` - Static assets
+
+## Submission
+
+Submit the assignment with a link to your GitHub repository.
+
+## Notes
+
+This repository currently contains the starter setup. The blog UI, Hygraph schema, and GraphQL fetching logic can be added on top of this foundation.
+
+For a short explanation of the Hygraph rich text issue we hit and the correct setup, see [HYGRAPH_RICH_TEXT_NOTES.md](HYGRAPH_RICH_TEXT_NOTES.md).

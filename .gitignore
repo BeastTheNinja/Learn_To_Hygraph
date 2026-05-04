@@ -7,18 +7,55 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+/.output/
+.parcel-cache/
+
+# Vite cache
+.vite/
+.cache/
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Hygraph (local config or generated caches)
+.hygraph/
+.hygraphrc
+.hygraphrc.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Tests
+coverage/
+*.lcov
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Misc
+*.local
+
