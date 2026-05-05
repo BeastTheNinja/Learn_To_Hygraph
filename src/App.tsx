@@ -18,7 +18,7 @@ function App() {
           borderColor: 'divider',
           borderRadius: 4,
           overflow: 'hidden',
-          boxShadow: '0 16px 40px rgba(31, 41, 55, 0.08)',
+          boxShadow: '0 16px 40px #1f293714',
         }}
       >
         {/* CardContent = den indvendige padding i kortet */}
